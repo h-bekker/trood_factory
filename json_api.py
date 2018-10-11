@@ -1,8 +1,11 @@
 import json
 
 def put(data):
+	with open('bd.json', 'r') as f:
+		db = json.load(f)
+	db.update(data)
 	with open('bd.json', 'w') as f:
-		json.dump(data, f, ensure_ascii=False)
+		json.dump(db, f, ensure_ascii=False)
 
 def take(file):
 	with open(file, 'r') as f:
