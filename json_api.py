@@ -18,7 +18,7 @@ def delete(key):
 				break
 	with open('bd.json', 'w') as f:
 		json.dump(data, f, ensure_ascii=False)
-
+'''
 d={10:"русский","fas":"fas"}
 put(d)
 ans = take('bd.json')
@@ -27,3 +27,4 @@ print(type(ans))
 delete("fas")
 ans = take('bd.json')
 print(ans)
+'''
