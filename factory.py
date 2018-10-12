@@ -28,7 +28,7 @@ async def post_handler(request):
 	channel.queue_declare(queue='signal')
 	channel.basic_publish(exchange='',
                       routing_key='signal',
-                      body=json.dumps(data))
+                      body=json.dumps(data, ensure_ascii=False))
 	return web.Response( text="Принято")
 
 app = web.Application()
