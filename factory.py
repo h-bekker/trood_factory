@@ -5,6 +5,12 @@ import pika
 
 routes = web.RouteTableDef()
 
+@routes.get('/reset')
+async def get_handler(request):
+	#data = {'some': 'data'}
+	json_api.reset()
+	return web.Response( text="База восстановлена")
+
 #Клиент запрашивает состояние
 @routes.get('/')
 async def get_handler(request):
@@ -15,8 +21,7 @@ async def get_handler(request):
 #Клиент поставляет деталь
 @routes.post('/')
 async def post_handler(request):
-	if request.body_exists:
-		data = await request.text()
+	data = await request.text()
 	data = json.loads(data)
 	#отправляем деталь в склад
 	json_api.put(data)
