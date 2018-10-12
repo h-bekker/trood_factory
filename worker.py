@@ -9,7 +9,6 @@ channel = connection.channel()
 channel.queue_declare(queue='signal')
 
 def callback(ch, method, properties, body):
-    print("[x] Received %r" % (body,))
     data = json.loads(body)
     for key, value in data.items():
     	part = value
